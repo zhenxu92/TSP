@@ -1,0 +1,27 @@
+import java.util.*;
+public class TSPMain {
+	public static void main(String args[]) {
+
+		int[][] edges = new int[10][10];
+		for (int i = 0; i < 20; i++) {
+			for (int j = 0; j < 20; j++) {
+				edges[i][j] = i * j;
+			}
+		}
+		
+		// Populate the edge matrix
+		
+		TSPManager tsp = new TSPManager(edges);
+		for (int i = 0; i < 10; i++) {
+			tsp.crossover();
+		}
+		
+		System.out.println(tsp.costCalc(tsp.optimalPath));
+		
+	}
+	
+	public static void addSym (int[][] edges, int r, int c, int value) {
+		edges[r][c] = value;
+		edges[c][r] = value;
+	}
+}

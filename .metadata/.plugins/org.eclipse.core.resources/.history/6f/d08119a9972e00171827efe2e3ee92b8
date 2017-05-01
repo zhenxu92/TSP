@@ -1,0 +1,262 @@
+import java.util.*;
+public class TSPMain {
+	public static void main(String args[]) {
+
+		int[][] edges = new int[20][20];
+//		for (int i = 0; i < 20; i++) {
+//			for (int j = 0; j < 20; j++) {
+//				edges[i][j] = i * j;
+//			}
+//		}
+		
+		// Populate the edge matrix
+		for (int i = 0; i < edges.length; i++) {
+			edges[i][i] = 0;
+		}
+		
+		// 0 row
+		addSym(edges, 0, 1, 1);
+		addSym(edges, 0, 2, 7);
+		addSym(edges, 0, 3, 9);
+		addSym(edges, 0, 4, 7);
+		addSym(edges, 0, 5, 3);
+		addSym(edges, 0, 6, 3);
+		addSym(edges, 0, 7, 0);
+		addSym(edges, 0, 8, 9);
+		addSym(edges, 0, 9, 1);
+		addSym(edges, 0, 10, 6);
+		addSym(edges, 0, 11, 7);
+		addSym(edges, 0, 12, 9);
+		addSym(edges, 0, 13, 1);
+		addSym(edges, 0, 14, 4);
+		addSym(edges, 0, 15, 9);
+		addSym(edges, 0, 16, 4);
+		addSym(edges, 0, 17, 6);
+		addSym(edges, 0, 18, 8);
+		addSym(edges, 0, 19, 1);
+		
+		// 1 row
+		addSym(edges, 1, 2, 7);
+		addSym(edges, 1, 3, 2);
+		addSym(edges, 1, 4, 4);
+		addSym(edges, 1, 5, 0);
+		addSym(edges, 1, 6, 5);
+		addSym(edges, 1, 7, 2);
+		addSym(edges, 1, 8, 7);
+		addSym(edges, 1, 9, 8);
+		addSym(edges, 1, 10, 6);
+		addSym(edges, 1, 11, 1);
+		addSym(edges, 1, 12, 9);
+		addSym(edges, 1, 13, 2);
+		addSym(edges, 1, 14, 0);
+		addSym(edges, 1, 15, 6);
+		addSym(edges, 1, 16, 4);
+		addSym(edges, 1, 17, 4);
+		addSym(edges, 1, 18, 0);
+		addSym(edges, 1, 19, 7);
+		
+		// 2 row
+		addSym(edges, 2, 3, 7);
+		addSym(edges, 2, 4, 6);
+		addSym(edges, 2, 5, 9);
+		addSym(edges, 2, 6, 1);
+		addSym(edges, 2, 7, 1);
+		addSym(edges, 2, 8, 8);
+		addSym(edges, 2, 9, 1);
+		addSym(edges, 2, 10, 4);
+		addSym(edges, 2, 11, 3);
+		addSym(edges, 2, 12, 4);
+		addSym(edges, 2, 13, 8);
+		addSym(edges, 2, 14, 9);
+		addSym(edges, 2, 15, 4);
+		addSym(edges, 2, 16, 8);
+		addSym(edges, 2, 17, 5);
+		addSym(edges, 2, 18, 3);
+		addSym(edges, 2, 19, 6);
+		
+		// 3 row
+		addSym(edges, 3, 4, 6);
+		addSym(edges, 3, 5, 3);
+		addSym(edges, 3, 6, 7);
+		addSym(edges, 3, 7, 4);
+		addSym(edges, 3, 8, 9);
+		addSym(edges, 3, 9, 5);
+		addSym(edges, 3, 10, 8);
+		addSym(edges, 3, 11, 4);
+		addSym(edges, 3, 12, 1);
+		addSym(edges, 3, 13, 4);
+		addSym(edges, 3, 14, 3);
+		addSym(edges, 3, 15, 2);
+		addSym(edges, 3, 16, 8);
+		addSym(edges, 3, 17, 4);
+		addSym(edges, 3, 18, 3);
+		addSym(edges, 3, 19, 3);
+		
+		// 4 row
+		addSym(edges, 4, 5, 7);
+		addSym(edges, 4, 6, 6);
+		addSym(edges, 4, 7, 6);
+		addSym(edges, 4, 8, 6);
+		addSym(edges, 4, 9, 5);
+		addSym(edges, 4, 10, 6);
+		addSym(edges, 4, 11, 7);
+		addSym(edges, 4, 12, 9);
+		addSym(edges, 4, 13, 7);
+		addSym(edges, 4, 14, 1);
+		addSym(edges, 4, 15, 4);
+		addSym(edges, 4, 16, 5);
+		addSym(edges, 4, 17, 9);
+		addSym(edges, 4, 18, 7);
+		addSym(edges, 4, 19, 5);
+		
+		// 5 row
+		addSym(edges, 5, 6, 8);
+		addSym(edges, 5, 7, 9);
+		addSym(edges, 5, 8, 4);
+		addSym(edges, 5, 9, 1);
+		addSym(edges, 5, 10, 2);
+		addSym(edges, 5, 11, 3);
+		addSym(edges, 5, 12, 4);
+		addSym(edges, 5, 13, 6);
+		addSym(edges, 5, 14, 8);
+		addSym(edges, 5, 15, 8);
+		addSym(edges, 5, 16, 4);
+		addSym(edges, 5, 17, 8);
+		addSym(edges, 5, 18, 8);
+		addSym(edges, 5, 19, 0);
+		
+		// 6 row
+		addSym(edges, 6, 7, 6);
+		addSym(edges, 6, 8, 9);
+		addSym(edges, 6, 9, 5);
+		addSym(edges, 6, 10,3);
+		addSym(edges, 6, 11, 0);
+		addSym(edges, 6, 12, 6);
+		addSym(edges, 6, 13, 3);
+		addSym(edges, 6, 14, 4);
+		addSym(edges, 6, 15, 3);
+		addSym(edges, 6, 16, 6);
+		addSym(edges, 6, 17, 4);
+		addSym(edges, 6, 18, 5);
+		addSym(edges, 6, 19, 5);
+
+		// 7 row
+		addSym(edges, 7, 8, 2);
+		addSym(edges, 7, 9, 0);
+		addSym(edges, 7, 10, 2);
+		addSym(edges, 7, 11, 6);
+		addSym(edges, 7, 12, 1);
+		addSym(edges, 7, 13, 9);
+		addSym(edges, 7, 14, 0);
+		addSym(edges, 7, 15, 2);
+		addSym(edges, 7, 16, 4);
+		addSym(edges, 7, 17, 0);
+		addSym(edges, 7, 18, 7);
+		addSym(edges, 7, 19, 4);
+		
+		// 8 row
+		addSym(edges, 8, 9, 4);
+		addSym(edges, 8, 10, 6);
+		addSym(edges, 8, 11, 3);
+		addSym(edges, 8, 12, 3);
+		addSym(edges, 8, 13, 9);
+		addSym(edges, 8, 14, 3);
+		addSym(edges, 8, 15, 8);
+		addSym(edges, 8, 16, 1);
+		addSym(edges, 8, 17, 6);
+		addSym(edges, 8, 18, 4);
+		addSym(edges, 8, 19, 9);
+		
+		// 9 row
+		addSym(edges, 9, 10, 6);
+		addSym(edges, 9, 11, 4);
+		addSym(edges, 9, 12, 3);
+		addSym(edges, 9, 13, 1);
+		addSym(edges, 9, 14, 0);
+		addSym(edges, 9, 15, 4);
+		addSym(edges, 9, 16, 2);
+		addSym(edges, 9, 17, 9);
+		addSym(edges, 9, 18, 7);
+		addSym(edges, 9, 19, 4);
+		
+		// 10 row
+		addSym(edges, 10, 11, 3);
+		addSym(edges, 10, 12, 6);
+		addSym(edges, 10, 13, 0);
+		addSym(edges, 10, 14, 7);
+		addSym(edges, 10, 15, 2);
+		addSym(edges, 10, 16, 2);
+		addSym(edges, 10, 17, 6);
+		addSym(edges, 10, 18, 3);
+		addSym(edges, 10, 19, 4);
+
+		// 11 row
+		addSym(edges, 11, 12, 0);
+		addSym(edges, 11, 13, 4);
+		addSym(edges, 11, 14, 9);
+		addSym(edges, 11, 15, 7);
+		addSym(edges, 11, 16, 8);
+		addSym(edges, 11, 17, 5);
+		addSym(edges, 11, 18, 3);
+		addSym(edges, 11, 19, 1);
+
+		// 12 row
+		addSym(edges, 12, 13, 0);
+		addSym(edges, 12, 14, 9);
+		addSym(edges, 12, 15, 4);
+		addSym(edges, 12, 16, 9);
+		addSym(edges, 12, 17, 4);
+		addSym(edges, 12, 18, 2);
+		addSym(edges, 12, 19, 9);
+
+		// 13 row
+		addSym(edges, 13, 14, 4);
+		addSym(edges, 13, 15, 7);
+		addSym(edges, 13, 16, 0);
+		addSym(edges, 13, 17, 3);
+		addSym(edges, 13, 18, 0);
+		addSym(edges, 13, 19, 1);
+		
+		// 14 row
+		addSym(edges, 14, 15, 5);
+		addSym(edges, 14, 16, 4);
+		addSym(edges, 14, 17, 3);
+		addSym(edges, 14, 18, 6);
+		addSym(edges, 14, 19, 1);
+		
+		// 15 row
+		addSym(edges, 15, 16, 2);
+		addSym(edges, 15, 17, 9);
+		addSym(edges, 15, 18, 3);
+		addSym(edges, 15, 19, 7);
+		
+		// 16 row
+		addSym(edges, 16, 17, 6);
+		addSym(edges, 16, 18, 0);
+		addSym(edges, 16, 19, 0);
+		
+		// 17 row
+		addSym(edges, 17, 18, 2);
+		addSym(edges, 17, 19, 1);
+		
+		// 18 row
+		addSym(edges, 18, 19, 7);
+		
+		
+		
+		
+		
+		TSPManager tsp = new TSPManager(edges);
+		for (int i = 0; i < 10; i++) {
+			tsp.crossover();
+		}
+		
+		System.out.println(tsp.costCalc(tsp.optimalPath));
+		
+	}
+	
+	public static void addSym (int[][] edges, int r, int c, int value) {
+		edges[r][c] = value;
+		edges[c][r] = value;
+	}
+}
